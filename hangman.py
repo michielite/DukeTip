@@ -45,6 +45,23 @@ word = (numpy.random.choice(words))
 s = word
 WRONG=[]
 correct=[]
+def printBlanks(word, correct):
+    # Set solved equal to true (innocent until proven guilty)
+    # Loop over each letter in the word  for l in word:
+    l = l.lower() # not required but nice to have
+    # Check if that letter is in the list of correct letters
+    if klo in correct: # Remove "False" and replace it with the appropriate condition
+        # If it is, print the letter and a space
+        print(klo)
+        print(" ")
+    else:
+        print("_ ")
+        # If it isn't, print an underscore and a space
+        # Also, set solved equal to False
+    print();
+    print();
+    return solved
+
 while True:
     numberWrong = len(WRONG)
     print(man[numberWrong])
@@ -56,12 +73,9 @@ while True:
     while len(letter)!=1:
         letter = raw_input("Please enter a single letter to guess the word!")
     klo = letter
-    while True:
-        if klo in s:
-            correct.append(klo)
-            print("correct")
-            break
-        else:
-            print("Letter was incorrect")
-            WRONG.append(["1"])
-            break
+    if klo in s:
+        correct.append(klo)
+        print("correct")
+    else:
+        print("Letter was incorrect")
+        WRONG.append(["1"])
