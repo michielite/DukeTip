@@ -1,5 +1,5 @@
 from __future__ import print_function
-words= ("Tree", "Virus", "Hangman", "Ebola", "Fun")
+words= ("tree", "virus", "hangman", "ebola", "fun")
 man=['''
    +---+
    |   |
