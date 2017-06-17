@@ -1,6 +1,6 @@
 from __future__ import print_function
 words= ("Tree", "Virus", "Hangman", "Ebola", "Fun")
-man='''
+man=['''
    +---+
    |   |
        |
@@ -39,29 +39,29 @@ man='''
   /|\  |
   / \  |
        |
-======='''
+=======''']
 import numpy
 word = (numpy.random.choice(words))
 s = word
-print(len(word))
+WRONG=[]
+correct=[]
 while True:
-    WRONG=()
-    numberWrong=len(WRONG)
-    if numberWrong == 0:
-        print(man[0])
+    numberWrong = len(WRONG)
+    print(man[numberWrong])
+    if numberWrong >= 4:
+        print("You are Dead! Good Luck Next Time!")
         break
-    else:
-        if numberWrong == 1:
-            print(man[1])
+    print(len(word))
+    letter=""
+    while len(letter)!=1:
+        letter = raw_input("Please enter a single letter to guess the word!")
+    klo = letter
+    while True:
+        if klo in s:
+            correct.append(klo)
+            print("correct")
+            break
         else:
-            if numberWrong >= 3:
-                print("arms")
-            else:
-                print("You are Dead")
-letter = raw_input("Please enter a single letter to guess the word!")
-klo= letter
-while len(letter) == 1:
-    if klo in s:
-        print("correct")
-    else:
-        print("Letter was incorrect")
+            print("Letter was incorrect")
+            WRONG.append(["1"])
+            break
