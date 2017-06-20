@@ -20,3 +20,4 @@ yfit = np.polyval(result, x2)
 plt.plot(x, y, label='Points')
 plt.plot(x2, yfit, label='Fit')
 
+print (plt)
