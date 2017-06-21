@@ -57,13 +57,19 @@ def processLikes(iLike):
 ########################################################
 # Begin Phase 1
 ########################################################
-
+#np.loadtxt("./ml-100k/u.data")
+#np.loadtxt("./ml-100k/u.item")
+#d=u.name("id \n name")
 # Load Data
 # Load the movie names data (u.item) with just columns 0 and 1 (id and name) id is np.int, name is S128
-movieNames = 0 # replace 0 with the correct code to load the movie names
-    
+movieNames = np.loadtxt('./ml-100k/u.item', delimiter="|", usecols=(0,1), dtype={'names':('id','name'), 'formats': (np.int,'S128')})
+
+print(movieNames)
+print(movieNames['id'])
+print(movieNames['name'])
 # Create a dictionary with the ids as keys and the names as the values
-movieDict = 0 # replace 0 with the code to make the dict
+movieDict = dict(zip(movieNames['id'],movieNames['name']))
+print(movieDict)# replace 0 with the code to make the dict
 # Load the movie Data (u.data) with just columns 0, 1, and 2 (user, movie, rating) all are np.int
 movieData = 0 # replace 0 with the correct cod eto load the movie data
 
