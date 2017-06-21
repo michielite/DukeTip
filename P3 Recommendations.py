@@ -99,10 +99,10 @@ movieRating={}
 # for that movies ID (don't forget to initialize the dictionary entry)
 for key in movieRatingTemp:
     print(movieRatingTemp[key])
-    movieRatingTemp[key]=np.mean(movieRatingTemp)
-    print(movieRatingTemp)
-    movieRatingCount[key]=len(movieRatingTemp[key])
-    print(movieRatingCount)
+    movieRating[key]=np.mean(movieRatingTemp[key])
+    print(movieRating[key])
+    movieRatingCount[key]=len(movieRatingTemp)
+    #print(movieRatingCount[key])
 # Create an empty dictionary for movieRating and movieRatingCount
 #movieRating = 0 # replace 0 with code for an empty dictionary
 #movieRatingCount = 0 # replace 0 with code for an empty dictionary
