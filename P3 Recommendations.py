@@ -71,7 +71,8 @@ print(movieNames['name'])
 movieDict = dict(zip(movieNames['id'],movieNames['name']))
 print(movieDict)# replace 0 with the code to make the dict
 # Load the movie Data (u.data) with just columns 0, 1, and 2 (user, movie, rating) all are np.int
-movieData = 0 # replace 0 with the correct cod eto load the movie data
+movieData = np.loadtxt('./ml-100k/u.data',usecols=(0,1,2),dtype={'names': ('user', 'movie', 'ratings'), 'formats' : (np.int, 'int', 'i4')})
+# replace 0 with the correct cod eto load the movie data
 
 print(movieData)
 print(movieNames)
@@ -86,14 +87,19 @@ exit(0) # Delete this after we finish phase 1, for now just get the data loaded
 # This is non-ideal, pandas, scipy, or graphlib should be used here
 
 # Create a dictionary to hold our temporary ratings
-movieRatingTemp = 0 # replace 0 with code for an empty dictionary
-
+movieRatingTemp = {}# replace 0 with code for an empty dictionary
+for movie in movieData:
+    if movie['names'] not in movieRatingTemp:
+        movieRatingTemp[movie['names']]=[]
+print(movieRatingTemp)
+movieRatingCount={}
+movieRating={}
 # For every row in the movie data, add the rating to a list in the dictionary entry
 # for that movies ID (don't forget to initialize the dictionary entry)
 
 # Create an empty dictionary for movieRating and movieRatingCount
-movieRating = 0 # replace 0 with code for an empty dictionary
-movieRatingCount = 0 # replace 0 with code for an empty dictionary
+#movieRating = 0 # replace 0 with code for an empty dictionary
+#movieRatingCount = 0 # replace 0 with code for an empty dictionary
 
 # Using numpy place the average rating for each movie in movieRating and the total number of ratings in movieRatingCount
 # Note: You will need a for loop to get each dictionary key
