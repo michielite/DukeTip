@@ -77,7 +77,7 @@ movieData = np.loadtxt('./ml-100k/u.data',usecols=(0,1,2),dtype={'names': ('user
 print(movieData)
 print(movieNames)
 
-exit(0) # Delete this after we finish phase 1, for now just get the data loaded
+#exit(0) # Delete this after we finish phase 1, for now just get the data loaded
 
 ########################################################
 # Begin Phase 2
@@ -89,14 +89,20 @@ exit(0) # Delete this after we finish phase 1, for now just get the data loaded
 # Create a dictionary to hold our temporary ratings
 movieRatingTemp = {}# replace 0 with code for an empty dictionary
 for movie in movieData:
-    if movie['names'] not in movieRatingTemp:
-        movieRatingTemp[movie['names']]=[]
+    if movie['movie'] not in movieRatingTemp:
+        movieRatingTemp[movie['movie']]=[]
+    movieRatingTemp[movie['movie']].append(movie['ratings'])
 print(movieRatingTemp)
 movieRatingCount={}
 movieRating={}
 # For every row in the movie data, add the rating to a list in the dictionary entry
 # for that movies ID (don't forget to initialize the dictionary entry)
-
+for key in movieRatingTemp:
+    print(movieRatingTemp[key])
+    movieRatingTemp[key]=np.mean(movieRatingTemp)
+    print(movieRatingTemp)
+    movieRatingCount[key]=len(movieRatingTemp[key])
+    print(movieRatingCount)
 # Create an empty dictionary for movieRating and movieRatingCount
 #movieRating = 0 # replace 0 with code for an empty dictionary
 #movieRatingCount = 0 # replace 0 with code for an empty dictionary
