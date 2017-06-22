@@ -64,18 +64,18 @@ def processLikes(iLike):
 # Load the movie names data (u.item) with just columns 0 and 1 (id and name) id is np.int, name is S128
 movieNames = np.loadtxt('./ml-100k/u.item', delimiter="|", usecols=(0,1), dtype={'names':('id','name'), 'formats': (np.int,'S128')})
 
-print(movieNames)
-print(movieNames['id'])
-print(movieNames['name'])
+#print(movieNames)
+#print(movieNames['id'])
+#print(movieNames['name'])
 # Create a dictionary with the ids as keys and the names as the values
 movieDict = dict(zip(movieNames['id'],movieNames['name']))
-print(movieDict)# replace 0 with the code to make the dict
+#print(movieDict)# replace 0 with the code to make the dict
 # Load the movie Data (u.data) with just columns 0, 1, and 2 (user, movie, rating) all are np.int
 movieData = np.loadtxt('./ml-100k/u.data',usecols=(0,1,2),dtype={'names': ('user', 'movie', 'ratings'), 'formats' : (np.int, 'int', 'i4')})
 # replace 0 with the correct cod eto load the movie data
 
-print(movieData)
-print(movieNames)
+#print(movieData)
+#print(movieNames)
 
 #exit(0) # Delete this after we finish phase 1, for now just get the data loaded
 
@@ -98,11 +98,11 @@ movieRating={}
 movieRatingTemp= {}
 # For every row in the movie data, add the rating to a list in the dictionary entry
 # for that movies ID (don't forget to initialize the dictionary entry)
-for key in movieData:
+for movie in movieData:
     if movie['movie'] not in movieRatingTemp:
         movieRatingTemp[movie['movie']]=[]
     movieRatingTemp[movie['movie']].append(movie['ratings'])
-    print(movie['movie'])
+   # print(movie['movie'])
 
     #print(movieRatingTemp[key])
     #movieRating[key]=np.mean(movieRatingTemp[key])
@@ -116,7 +116,7 @@ movieRatingCount = {} # replace 0 with code for an empty dictionary
 # Using numpy place the average rating for each movie in movieRating and the total number of ratings in movieRatingCount
 # Note: You will need a for loop to get each dictionary key
 for key in movieRatingTemp:
-    (movieRatingTemp[key])= np.mean(movieRatingTemp[key])
+    movieRating[key]= np.mean(movieRatingTemp[key])
     movieRatingCount[key] = len(movieRatingTemp[key])
 print(movieRatingTemp[key])
 print(movieRatingCount[key])
@@ -130,8 +130,9 @@ print("Top Ten Movies:")
 # It should print the number, title, id, rating and count of reviews for each movie
 # ie 2. Someone Else's America (1995) (ID: 1599) Rating: 5.0 Count: 1
 for i in range(0,10):
-    print("Movie Id: "+str(movieRatingS[i][0])+"Rating: "+ str(movieRatingS[i][1])+" " + movieDict[movieRatingS[i][0]] + str(movieRatingCount[movieRatingS[i][0]]))
-print(movieRatingS[0][0])
+    print("Movie Id: "+str(movieRatingS[i][0])+" Rating: "+ str(movieRatingS[i][1])+" " + movieDict[movieRatingS[i][0]] +" Number of Ratings: "+ str(movieRatingCount[movieRatingS[i][0]]))
+#print(movieRatingS[0][0])
+
 
 # Top 10 Movies with at least 100 ratings    
 print("\n\nTop Ten movies with at least 100 ratings:")
@@ -139,7 +140,14 @@ print("\n\nTop Ten movies with at least 100 ratings:")
 # The number should be the movie's absolute rank
 # ie (16. Close Shave, A (1995) (ID: 408) Rating: 4.49 Count: 112)
 # Number 16 is first in this list because it's the first movie with over 100 ratings
-
+moviesprinted= 0
+i=0
+while moviesprinted <10:
+    if (movieRatingCount[movieRatingS[i][0]]) >= 100:
+        print(str(i+1)+" "+"Movie Id: "+str(movieRatingS[i][0])+" Rating: "+ str(movieRatingS[i][1])+" " + movieDict[movieRatingS[i][0]] +" Number of Ratings: "+ str(movieRatingCount[movieRatingS[i][0]]))
+        moviesprinted +=1
+    i +=1
+#print(movieRatingS[0][0])
 exit(0) # Remove this line after we finish phase 2
 
 ########################################################
