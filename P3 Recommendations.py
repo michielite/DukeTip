@@ -87,30 +87,39 @@ print(movieNames)
 # This is non-ideal, pandas, scipy, or graphlib should be used here
 
 # Create a dictionary to hold our temporary ratings
-movieRatingTemp = {}# replace 0 with code for an empty dictionary
-for movie in movieData:
+#movieRatingTemp = {}# replace 0 with code for an empty dictionary
+#for movie in movieData:
+ #   if movie['movie'] not in movieRatingTemp:
+  #      movieRatingTemp[movie['movie']]=[]
+   # movieRatingTemp[movie['movie']].append(movie['ratings'])
+#print(movieRatingTemp)
+movieRatingCount={}
+movieRating={}
+movieRatingTemp= {}
+# For every row in the movie data, add the rating to a list in the dictionary entry
+# for that movies ID (don't forget to initialize the dictionary entry)
+for key in movieData:
     if movie['movie'] not in movieRatingTemp:
         movieRatingTemp[movie['movie']]=[]
     movieRatingTemp[movie['movie']].append(movie['ratings'])
-print(movieRatingTemp)
-movieRatingCount={}
-movieRating={}
-# For every row in the movie data, add the rating to a list in the dictionary entry
-# for that movies ID (don't forget to initialize the dictionary entry)
-for key in movieRatingTemp:
+    print(movie['movie'])
+
     #print(movieRatingTemp[key])
-    movieRating[key]=np.mean(movieRatingTemp[key])
+    #movieRating[key]=np.mean(movieRatingTemp[key])
     #print(movieRating[key])
-    movieRatingCount[key]=len(movieRating)
+    #movieRatingCount[key]=len(movieRating)
     #print(movieRatingCount[key])
 # Create an empty dictionary for movieRating and movieRatingCount
-#movieRating = 0 # replace 0 with code for an empty dictionary
-#movieRatingCount = 0 # replace 0 with code for an empty dictionary
+movieRating = {} # replace 0 with code for an empty dictionary
+movieRatingCount = {} # replace 0 with code for an empty dictionary
 
 # Using numpy place the average rating for each movie in movieRating and the total number of ratings in movieRatingCount
 # Note: You will need a for loop to get each dictionary key
-
-
+for key in movieRatingTemp:
+    (movieRatingTemp[key])= np.mean(movieRatingTemp[key])
+    movieRatingCount[key] = len(movieRatingTemp[key])
+print(movieRatingTemp[key])
+print(movieRatingCount[key])
 # Get sorting ratings
 # https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/
 movieRatingS = sorted(movieRating.iteritems(), key=lambda (k,v): (v,k), reverse=True)
@@ -120,7 +129,9 @@ print("Top Ten Movies:")
 # Print the top 10 movies
 # It should print the number, title, id, rating and count of reviews for each movie
 # ie 2. Someone Else's America (1995) (ID: 1599) Rating: 5.0 Count: 1
-
+for i in range(0,10):
+    print("Movie Id: "+str(movieRatingS[i][0])+"Rating: "+ str(movieRatingS[i][1])+" " + movieDict[movieRatingS[i][0]] + str(movieRatingCount[movieRatingS[i][0]]))
+print(movieRatingS[0][0])
 
 # Top 10 Movies with at least 100 ratings    
 print("\n\nTop Ten movies with at least 100 ratings:")
