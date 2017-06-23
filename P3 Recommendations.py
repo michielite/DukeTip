@@ -7,12 +7,13 @@ import numpy as np
 
 def findSimilar(iLike, userLikes):
     # Create an And similarity
-    similarityAnd = 0 # replace 0 with the correct code
+    similarityAnd = iLike*userLikes
+    # replace 0 with the correct code
     # Create a per user sum
-    similarityAndSum = 0 # replace 0 with the correct code(is numerator of the jaccard index)
+    similarityAndSum = userLikes.sum(axis=1) # replace 0 with the correct code(is numerator of the jaccard index)
     # Create an Or similarity
-    userSimilarityOr = 0 # replace 0 with the correct code
-    
+    userSimilarityOr = help.me/com/suicide/asireplace 0 with the correct code
+
     # Calculate the similarity
     userSimilarity = 0 # replace 0 with the correct code to calculate the Jaccard Index for each user
     
