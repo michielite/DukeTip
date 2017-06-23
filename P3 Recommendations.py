@@ -12,7 +12,8 @@ def findSimilar(iLike, userLikes):
     # Create a per user sum
     similarityAndSum = userLikes.sum(axis=1) # replace 0 with the correct code(is numerator of the jaccard index)
     # Create an Or similarity
-    userSimilarityOr = replace 0 with the correct code
+    userSimilarityOr =  
+    #replace 0 with the correct code
 
     # Calculate the similarity
     userSimilarity = 0 # replace 0 with the correct code to calculate the Jaccard Index for each user
