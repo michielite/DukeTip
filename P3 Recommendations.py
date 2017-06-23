@@ -9,7 +9,7 @@ def findSimilar(iLike, userLikes):
     # Create an And similarity
     similarityAnd = 0 # replace 0 with the correct code
     # Create a per user sum
-    similaritySum = 0 # replace 0 with the correct code
+    similarityAndSum = 0 # replace 0 with the correct code(is numerator of the jaccard index)
     # Create an Or similarity
     userSimilarityOr = 0 # replace 0 with the correct code
     
@@ -148,7 +148,7 @@ while moviesprinted <10:
         moviesprinted +=1
     i +=1
 #print(movieRatingS[0][0])
-exit(0) # Remove this line after we finish phase 2
+# Remove this line after we finish phase 2
 
 ########################################################
 # Begin Phase 3
@@ -159,18 +159,21 @@ exit(0) # Remove this line after we finish phase 2
 # Create a numpy ndarray of zeros with demensions of max user id + 1 and max movie + 1 (because we'll use them as 1 indexed not zero indexed)
 
 # Find the max movie ID + 1
-maxMovie = 0 # replace 0 with the correct code
-
+maxMovie = np.max(movieData['movie'])+1
+# replace 0 with the correct code
 # Find the max user Id + 1
-maxUser = 0 # replace 0 with the correct code
-
+maxUser = np.max(movieData['user'])+1 # replace 0 with the correct code
 # Create an array of 0s which will fill in with 1s when a user likes a movie
 userLikes = np.zeros((maxUser, maxMovie))
-
+print(userLikes)
 # Go through all the rows of the movie data.
 # If the user rated a movie as 4 or 5 set userLikes to 1 for that user and movie
-# Note: You'll need a for loop and an if statement
-
+# Note: You'll need a for loop and an if stateme
+for movie in movieData:
+    if movie['ratings'] >=4:
+        userLikes[movie['user'],movie['movie']]=1
+#userLikes[3,:] = 1
+print(userLikes)
 
 ########################################################
 # At this point, go back up to the top and fill in the
