@@ -7,28 +7,26 @@ import numpy as np
 
 def findSimilar(iLike, userLikes):
     # Create an And similarity
-    similarityAnd = iLike*userLikes
-    # replace 0 with the correct code
+    similarityAnd = np.logical_and(iLike, userLikes)  # replace 0 with the correct code
     # Create a per user sum
-    similarityAndSum = userLikes.sum(axis=1) # replace 0 with the correct code(is numerator of the jaccard index)
+    similarityAndSum = np.sum(similarityAnd)  # replace 0 with the correct code
     # Create an Or similarity
-    userSimilarityOr = np.logical_or(iLike, userLikes)
-    #replace 0 with the correct code
+    userSimilarityOr = np.logical_or(iLike, userLikes)  # replace 0 with the correct code
 
     # Calculate the similarity
-    userSimilarity = similarityAnd/userSimilarityOr # replace 0 with the correct code to calculate the Jaccard Index for each user
-    print(userSimilarity)
+    userSimilarity = similarityAndSum / userSimilarityOr  # replace 0 with the correct code to calculate the Jaccard Index for each user
+
     # Make the most similar user has a new like that the previous user did not have
     # I used a while loop.
     # You can "get rid" of a user that is most similar, but doesn't have any new likes
     # by setting the userSimilarity for them to 0
     # When you get the index, save it in the variable maxIndex
-    
+
     # Print the max similarity number (most times this is something like 0.17
-    
+
     # Return the index of the user which is the best match
     return maxIndex
-    
+
 def printMovie(id):
     # Print the id of the movie and the name.  This should look something like
     # "    - 430: Duck Soup (1933)" if the id is 430 and the name is Duck Soup (1933)
@@ -36,7 +34,7 @@ def printMovie(id):
 
 def processLikes(iLike):
     print("\n\nSince you like:")
-    
+
     # Print the name of each movie the user reported liking
     # Hint: Use a for loop and the printMovie function.
 
