@@ -12,7 +12,7 @@ def findSimilar(iLike, userLikes):
     # Create a per user sum
     similarityAndSum = userLikes.sum(axis=1) # replace 0 with the correct code(is numerator of the jaccard index)
     # Create an Or similarity
-    userSimilarityOr =  
+    userSimilarityOr = np.logical_or(iLike, userLikes)
     #replace 0 with the correct code
 
     # Calculate the similarity
