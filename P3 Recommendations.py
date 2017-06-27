@@ -25,6 +25,7 @@ def findSimilar(iLike, userLikes):
     # Print the max similarity number (most times this is something like 0.17
 
     # Return the index of the user which is the best match
+
     return maxIndex
 
 def printMovie(id):
